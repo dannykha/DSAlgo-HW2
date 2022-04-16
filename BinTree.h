@@ -1,65 +1,82 @@
 #pragma once
-
 #include "nodedata.h"
+#include <cassert>
 using namespace std;
 
 class BinTree
 {
-
-    friend ostream& operator<<(ostream &output, const BinTree&);
+    
+    friend ostream& operator<<(ostream &output, const BinTree &);
 
 public:
-    BinTree();
-    BinTree(const BinTree &);
-    ~BinTree();
+    
+    BinTree();								
+    BinTree(const BinTree &inputTree);				
+    ~BinTree();								
 
-    bool isEmpty() const;
+    bool isEmpty() const;					
+    void makeEmpty();						
 
-    void makeEmpty();
+   
+    BinTree& operator=(const BinTree &);
 
-    BinTree& operator=(const BinTree&);
+   
+    bool operator==(const BinTree &) const;
+    bool operator!=(const BinTree &) const;
 
-    bool operator==(const BinTree &other) const;
-    bool operator!=(const BinTree &other) const;
 
     bool insert(NodeData*);
 
-    bool retrieve(const NodeData&, NodeData* &);
+  
+    bool retrieve(const NodeData &compare, NodeData* &retrieve) const;
 
-    int getHeight(const NodeData&) const;
+   
+    int getHeight(const NodeData &node) const;
 
-    void bstreeToArray(NodeData* []);
+   
+    void bstreeToArray(NodeData* arrayToFill[]);
 
+   
     void arrayToBSTree(NodeData* []);
 
+ 
     void displaySideways() const;
-
-
 
 private:
     struct Node
     {
-        NodeData* data;
-        Node* left;
-        Node* right;
+        NodeData* data;						
+        Node* left;							
+        Node* right;						
     };
-    Node* root;
+    Node* root;								
 
-    Node* copyHelper(Node* other);
+    void inorderHelper(Node* curr) const;
 
-    void deleter(Node* otherRoot);
+    void makeEmptyHelper(Node*& curr);
 
-    bool equalityHelper(Node* x, Node* y) const;
+    void assignmentHelper(Node* &leftTree, Node* rightTree);
 
-    bool insertHelper(Node* thisRoot, NodeData* insertNode);
+    bool equalityHelper(Node*, Node*) const;
 
-    bool retrieveHelper(Node* thisRoot, const NodeData &other, NodeData* &otherData) const;
+    bool insertHelper(Node* &curr, NodeData*);
 
-    int getHeightHelper(const NodeData &, Node*) const;
+    void retrieveHelper(Node* curr, const NodeData &compare, NodeData* &retrieve) const;
 
-    int bstreeToArrayHelper(Node*) const;
+    int getHeightHelper(Node *root, const NodeData &node, bool &found) const;
 
-    void arrayToBSTreeHelper(Node*, NodeData* [], int, int);
+    int depth(Node* root) const;
 
-    void sidewaysHelper(Node*, int) const;
+    //int recursiveGetHeightHelper(Node*) const;
+
+    int sizeOf(NodeData* array[]) const;
+
+    int bstreeToArrayHelper(Node *curr, NodeData* arrayToFill[]) const;
+
+    void arrayToTreeHelper(NodeData* array[], int left, int right);
+
+    void sideways(Node*, int) const;
+
+    int sizeOfArray;
+    int size;
 };
