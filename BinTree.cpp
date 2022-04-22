@@ -203,7 +203,7 @@ bool BinTree::equalityHelper(Node* leftNode, Node* rightNode) const
 // --------------------------------------------------------------
 bool BinTree::operator!=(const BinTree &rightTree) const
 {
-    return !(this == &rightTree); // invert the equality.
+    return !(*this == rightTree); // invert the equality.
 } // end of unequality operator
 
 // --------------------- insert ---------------------------------
