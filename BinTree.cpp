@@ -470,12 +470,14 @@ void BinTree::displaySideways() const
 // --------------------------------------------------------------
 void BinTree::sideways(Node* curr, int level) const
 {
-    if (curr != nullptr) { 
+    if (curr != nullptr) 
+    { 
         level++; 
         sideways(curr->right, level); 
         
         // for loop to create indentation
-        for (int i = level; i >= 0; i--) {
+        for (int i = level; i >= 0; i--) 
+        {
             cout << "    ";
         }
 
