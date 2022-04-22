@@ -90,13 +90,11 @@ void BinTree::destroy(Node*& curr)
         destroy(curr->left); // recurse back left to delete left
         destroy(curr->right); // recurse back right to delete right
 
-        delete curr->data; // delete the current data
-        curr->data = nullptr; // set it to nul
-
-        delete curr->left;
-        curr->left = nullptr;
-        delete curr->right;
-        curr->right = nullptr;
+        if (curr->data != nullptr) 
+        {
+            delete curr->data; // delete the current data
+            curr->data = nullptr; // set it to nul
+        }
 
         delete curr; 
         curr = nullptr; // sets the pointer of current to null
