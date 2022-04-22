@@ -91,10 +91,10 @@ private:
     void assignmentHelper(Node* &leftTree, Node* rightTree);
 
     // function to help check for equality of trees
-    bool equalityHelper(Node*, Node*) const;
+    bool equalityHelper(Node* leftNode, Node* rightNode) const;
 
     // function to help insert 
-    bool insertHelper(Node* &curr, NodeData*);
+    bool insertHelper(Node* &curr, NodeData* toInsert);
 
     // function to help retrieve
     void retrieveHelper(Node* curr, const NodeData &compare, NodeData* &retrieve) const;
@@ -115,5 +115,5 @@ private:
     void arrayToTreeHelper(NodeData* array[], int left, int right);
 
     // function to help display the tree sideways
-    void sideways(Node*, int) const;
+    void sideways(Node* curr, int level) const;
 };

@@ -90,11 +90,13 @@ void BinTree::destroy(Node*& curr)
         destroy(curr->left); // recurse back left to delete left
         destroy(curr->right); // recurse back right to delete right
 
-        if (curr->data != nullptr)
-        {
-            delete curr->data; // delete the current data
-            curr->data = nullptr; // set it to null
-        }
+        delete curr->data; // delete the current data
+        curr->data = nullptr; // set it to nul
+
+        delete curr->left;
+        curr->left = nullptr;
+        delete curr->right;
+        curr->right = nullptr;
 
         delete curr; 
         curr = nullptr; // sets the pointer of current to null
@@ -106,11 +108,12 @@ void BinTree::destroy(Node*& curr)
 // --------------------------------------------------------------
 bool BinTree::isEmpty() const
 {
-    if (this->root == nullptr) // checking if it is empty
+    if (this->root == nullptr || this->root->data == nullptr) // checking if it is empty
     {
         return true;
     }
-    else{
+    else
+    {
         return false;
     }
 } // end of isEmpty
@@ -225,21 +228,24 @@ bool BinTree::insertHelper(Node* &curr, NodeData* toInsert)
         curr = new Node;   
         curr->data = toInsert;   
         curr->left = nullptr;   
-        curr->right = nullptr;  
+        curr->right = nullptr;
+
+        return true;  
     }
 
     if (*toInsert != *curr->data) // checking that it is not already equal
     {
         if (*toInsert < *curr->data)
         {
-            insertHelper(curr->left, toInsert); // traverse left
+            return insertHelper(curr->left, toInsert); // traverse left
         }
+
         if (*toInsert > *curr->data)
         {
-            insertHelper(curr->right, toInsert); // traverse right
+            return insertHelper(curr->right, toInsert); // traverse right
         }
     }
-    return true;    
+    return false; 
 } // end of insertHelper
 
 // --------------------- retrieve -------------------------------
