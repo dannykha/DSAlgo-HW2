@@ -83,7 +83,7 @@ void BinTree::makeEmpty()
 // --------------------- destroy --------------------------------
 // Helper function to makeEmpty and destroys the entire BinTree.
 // --------------------------------------------------------------
-void BinTree::destroy(Node*& curr)
+void BinTree::destroy(Node* &curr)
 {
     if (curr != nullptr)    
     {
@@ -312,7 +312,7 @@ int BinTree::getHeight(const NodeData &node) const
 // Helper function to get the height of the specificed Node.
 // Uses retireve and recursiveHeightHelper functions.
 // --------------------------------------------------------------
-int BinTree::getHeightHelper(Node *curr, const NodeData &node, bool &found) const
+int BinTree::getHeightHelper(Node* curr, const NodeData &node, bool &found) const
 {
     int left; // temp left
     int right; // temp right

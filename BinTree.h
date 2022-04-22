@@ -20,7 +20,7 @@ using namespace std;
 class BinTree
 {
     // output overload
-    friend ostream& operator<<(ostream &output, const BinTree &);
+    friend ostream& operator<<(ostream &output, const BinTree &tree);
 
 public:
 
@@ -85,7 +85,7 @@ private:
     void inorderHelper(Node* curr) const;
 
     // function to help the makeEmpty 
-    void destroy(Node*& curr);
+    void destroy(Node* &curr);
 
     // function to help the assignment operator
     void assignmentHelper(Node* &leftTree, Node* rightTree);
@@ -100,7 +100,7 @@ private:
     void retrieveHelper(Node* curr, const NodeData &compare, NodeData* &retrieve) const;
 
     // function to help get height
-    int getHeightHelper(Node *curr, const NodeData &node, bool &found) const;
+    int getHeightHelper(Node* curr, const NodeData &node, bool &found) const;
 
     // function to help get depth which connects to the height helper
     int recursiveHeightHelper(Node* curr) const;
@@ -109,7 +109,7 @@ private:
     int sizeOf(NodeData* array[]) const;
 
     // function to help convert a binary search tree to array
-    int bstreeToArrayHelper(Node *curr, NodeData* arrayToFill[]) const;
+    int bstreeToArrayHelper(Node* curr, NodeData* arrayToFill[]) const;
 
     // function to help convert a array to a binary search tree
     void arrayToTreeHelper(NodeData* array[], int left, int right);
